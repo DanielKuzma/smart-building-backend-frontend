@@ -1,5 +1,5 @@
 package com.rdhxb.smart_building.user.entity;
 
 public enum Role {
-    MEMBER,ADMIN,A;
+    ADMIN,BUILDING_MANAGER,RESIDENT;
 }

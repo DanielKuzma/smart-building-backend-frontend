@@ -1,9 +1,11 @@
 package com.rdhxb.smart_building.auth;
 
 import com.rdhxb.smart_building.security.JwtUtil;
+import com.rdhxb.smart_building.user.dto.RegisterRequest;
 import com.rdhxb.smart_building.user.entity.Role;
 import com.rdhxb.smart_building.user.entity.User;
 import com.rdhxb.smart_building.user.repo.UserRepo;
+import jakarta.validation.Valid;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,7 +45,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String registerUser(@RequestBody User user) {
+    public String registerUser(@Valid @RequestBody RegisterRequest user) {
         if (userRepository.existsUserByUsername(user.getUsername())) {
             return "User already exists!";
         }
@@ -52,7 +54,7 @@ public class AuthController {
                 null,
                 user.getUsername(),
                 encoder.encode(user.getPassword()),
-                user.getRole()
+                Role.RESIDENT
         );
         userRepository.save(newUser);
         return "User registered successfully!";
