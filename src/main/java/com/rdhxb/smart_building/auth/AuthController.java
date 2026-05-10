@@ -1,7 +1,8 @@
 package com.rdhxb.smart_building.auth;
 
 import com.rdhxb.smart_building.security.JwtUtil;
-import com.rdhxb.smart_building.user.dto.RegisterRequest;
+import com.rdhxb.smart_building.user.DTO.LogInRequest;
+import com.rdhxb.smart_building.user.DTO.RegisterRequest;
 import com.rdhxb.smart_building.user.entity.Role;
 import com.rdhxb.smart_building.user.entity.User;
 import com.rdhxb.smart_building.user.repo.UserRepo;
@@ -32,7 +33,7 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public String authenticateUser(@RequestBody User user) {
+    public String authenticateUser(@RequestBody LogInRequest user) {
         Authentication authentication = authenticationManager.authenticate(
                 new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
                         user.getUsername(),

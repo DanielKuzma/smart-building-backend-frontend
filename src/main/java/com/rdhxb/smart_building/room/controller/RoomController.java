@@ -1,6 +1,7 @@
 package com.rdhxb.smart_building.room.controller;
 
 import com.rdhxb.smart_building.room.DTO.RoomRequest;
+import com.rdhxb.smart_building.room.DTO.RoomResponse;
 import com.rdhxb.smart_building.room.entity.Room;
 import com.rdhxb.smart_building.room.service.RoomService;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/room")
+@RequestMapping("/api/rooms")
 public class RoomController {
 
     private final RoomService roomService;
@@ -22,12 +23,12 @@ public class RoomController {
     }
 
     @GetMapping
-    public List<Room> getRooms(){
+    public List<RoomResponse> getRooms(){
         return roomService.getRooms();
     }
 
     @GetMapping("/{id}")
-    public Room getRoom(@PathVariable long id){
+    public RoomResponse getRoom(@PathVariable long id){
         return roomService.getRoom(id);
     }
 

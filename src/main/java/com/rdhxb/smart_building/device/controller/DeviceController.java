@@ -52,14 +52,11 @@ public class DeviceController {
     }
 
 
-    @PutMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','BUILDING_MANAGER')")
+    @PatchMapping("/{id}")
     @Transactional
     public void changeStatus(@PathVariable long id, @RequestParam DeviceStatus deviceStatus){
         deviceService.changeStatus(deviceStatus,id);
     }
-
-
 
 
 }

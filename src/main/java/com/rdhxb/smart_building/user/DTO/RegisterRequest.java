@@ -1,4 +1,4 @@
-package com.rdhxb.smart_building.user.dto;
+package com.rdhxb.smart_building.user.DTO;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

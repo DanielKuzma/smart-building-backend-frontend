@@ -1,6 +1,7 @@
 package com.rdhxb.smart_building.room.service;
 
 import com.rdhxb.smart_building.room.DTO.RoomRequest;
+import com.rdhxb.smart_building.room.DTO.RoomResponse;
 import com.rdhxb.smart_building.room.entity.Room;
 import com.rdhxb.smart_building.room.repo.RoomRepo;
 import jakarta.persistence.EntityExistsException;
@@ -20,13 +21,18 @@ public class RoomService {
     }
 
 //    get all rooms
-    public List<Room> getRooms(){
-        return roomRepo.findAll();
+    public List<RoomResponse> getRooms(){
+        return roomRepo.findAll()
+                .stream()
+                .map(RoomResponse::from)
+                .toList();
     }
 
 //    get one room
-    public Room getRoom(long id){
-        return roomRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("No room with id: " + id));
+    public RoomResponse getRoom(long id){
+        Room room = roomRepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("No room with id: " + id));
+        return RoomResponse.from(room);
     }
 
 //    add new room
@@ -47,10 +53,9 @@ public class RoomService {
     }
     
 //    delete room 
-    public boolean deleteRoom(long id){
+    public void deleteRoom(long id){
         Room room = roomRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("No room with id: " + id));
         roomRepo.delete(room);
-        return true;
     }
 
 
