@@ -4,6 +4,8 @@ import com.rdhxb.smart_building.user.DTO.UserResponse;
 import com.rdhxb.smart_building.user.entity.Role;
 import com.rdhxb.smart_building.user.entity.User;
 import com.rdhxb.smart_building.user.repo.UserRepo;
+import jakarta.persistence.EntityExistsException;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,9 @@ public class UserService {
 
     public UserResponse getUserById(Long id){
         User user = userRepo.findUserById(id);
+        if (user == null){
+            throw new EntityNotFoundException("No user with id: " + id);
+        }
         return UserResponse.from(user);
     }
 
