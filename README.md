@@ -1,3 +1,5 @@
+Zmienione jest z portu 3306 na 3307
+
 
  W tych AuthController, DeviceController itd. dodane są adnotacje 
  ```java 
