@@ -1,8 +1,10 @@
 
- W tych AuthController, DeviceController itd. dodane są adnotacje @CrossOrigin(origins = "http://localhost:5173") i ten import org.springframework.web.bind.annotation.CrossOrigin;
-
+ W tych AuthController, DeviceController itd. dodane są adnotacje 
+ ```java @CrossOrigin(origins = "http://localhost:5173")``` i ten import 
+ ```java org.springframework.web.bind.annotation.CrossOrigin; ```
 
 W WebSecurityConfig.java dodane jest KONFIGURACJA CORS taka o:
+```java
      @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -13,8 +15,9 @@ W WebSecurityConfig.java dodane jest KONFIGURACJA CORS taka o:
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
+```
 Ten SecurityFilterChain tez jest zmieniony na taki bo inaczej nie działało:
+```java
     @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
             http
@@ -34,7 +37,7 @@ Ten SecurityFilterChain tez jest zmieniony na taki bo inaczej nie działało:
             return http.build();
         }
 }
+```
 
-
-pobierasz reacta i takie biblioteki do reacta: npm install axios react-router-dom bootstrap react-bootstrap
-npm run dev => tym sie startuje
+pobierasz reacta i takie biblioteki do reacta: ```npm install axios react-router-dom bootstrap react-bootstrap```
+```npm run dev```  tym sie startuje
