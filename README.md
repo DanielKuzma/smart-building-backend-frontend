@@ -44,5 +44,8 @@ Ten SecurityFilterChain tez jest zmieniony na taki bo inaczej nie działało:
 }
 ```
 
-pobierasz reacta i takie biblioteki do reacta: ```npm install axios react-router-dom bootstrap react-bootstrap```
-```npm run dev```  tym sie startuje
+pobierasz reacta i takie biblioteki do reacta: 
+```npm install axios react-router-dom bootstrap react-bootstrap```
+
+tym sie startuje:
+```npm run dev```  
