@@ -1,9 +1,14 @@
 
  W tych AuthController, DeviceController itd. dodane są adnotacje 
- ```java @CrossOrigin(origins = "http://localhost:5173")``` i ten import 
- ```java org.springframework.web.bind.annotation.CrossOrigin; ```
+ ```java 
+ @CrossOrigin(origins = "http://localhost:5173")
+```
+i ten import 
+ ```java
+org.springframework.web.bind.annotation.CrossOrigin;
+```
 
-W WebSecurityConfig.java dodane jest KONFIGURACJA CORS taka o:
+W WebSecurityConfig.java dodane jest konfiguracja CORS taka o:
 ```java
      @Bean
     public CorsConfigurationSource corsConfigurationSource() {
